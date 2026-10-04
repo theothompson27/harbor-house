@@ -1,0 +1,808 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Harbor House Lifestyle Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: fixed masthead rule, horizontal tab rail, single content column of stacked record blocks. */
+:root{
+  --paper:#FBFAF7; --card:#FFFFFF; --ink:#141312; --smoke:#605B54; --faint:#8B857C;
+  --hair:#DCD7CD; --wash:#F2EFE8; --accent:#1B3A4B; --good:#2F5D3A; --warn:#8A6A1F; --bad:#8C3A2E;
+  --display:"Bodoni Moda",Didot,"Times New Roman",serif;
+  --sans:"Jost","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#15161A; --card:#1C1E23; --ink:#F0EDE6; --smoke:#A8A29A; --faint:#827C74;
+  --hair:#32353C; --wash:#22252B; --accent:#9CC2D6; --good:#8FC39B; --warn:#D9B45F; --bad:#E0907F;
+  color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --paper:#15161A; --card:#1C1E23; --ink:#F0EDE6; --smoke:#A8A29A; --faint:#827C74;
+  --hair:#32353C; --wash:#22252B; --accent:#9CC2D6; --good:#8FC39B; --warn:#D9B45F; --bad:#E0907F;
+  color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;
+  font-size:15px;line-height:1.6;margin:0;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:24px;padding-block:52px 96px}
+h1,h2,h3{text-wrap:balance;margin:0}
+.lede{max-width:48ch}
+
+/* masthead */
+.mast{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.wordmark{font-family:var(--sans);font-weight:300;font-size:clamp(22px,3.6vw,30px);
+  letter-spacing:.34em;line-height:1;margin:0}
+.wordsub{font-family:var(--display);font-weight:400;font-size:15px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--ink);margin:9px 0 0}
+.mastr{text-align:right;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);line-height:2.1}
+.hr{height:1px;background:var(--ink);margin:22px 0 0;border:0}
+.standfirst{margin:22px 0 0;font-size:14px;color:var(--smoke);max-width:54ch}
+
+/* tabs */
+.rail{display:flex;flex-wrap:wrap;gap:0 4px;margin:46px 0 0}
+.tab{appearance:none;background:none;border:0;border-bottom:1px solid transparent;
+  font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--faint);padding:6px 20px 7px;cursor:pointer}
+.tab:first-child{padding-left:0}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* summary strip */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:34px;
+  margin:52px 0 0;padding-bottom:40px;border-bottom:1px solid var(--hair)}
+.cell{min-width:0}
+.cell .k{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint)}
+.cell .v{font-family:var(--display);font-size:34px;font-weight:400;line-height:1.1;margin-top:12px}
+.cell .n{font-size:12px;color:var(--faint);margin-top:8px}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:0 22px;margin:34px 0 0;align-items:baseline}
+.flab{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);margin-right:6px}
+.chip{appearance:none;background:none;border:0;border-bottom:1px solid transparent;color:var(--faint);
+  font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  padding:3px 0 4px;cursor:pointer}
+.chip[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* record rows */
+.rows{margin:40px 0 0}
+.row{padding:0 0 32px;margin-bottom:32px;border-bottom:1px solid var(--hair)}
+.row:last-child{border-bottom:0;margin-bottom:0}
+.rtop{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;justify-content:space-between}
+.rname{font-family:var(--display);font-size:21px;font-weight:400;letter-spacing:.01em;min-width:0}
+.rmeta{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);margin-top:9px}
+.rbody{font-size:14px;color:var(--smoke);margin-top:12px;max-width:64ch}
+.pill{display:inline-block;font-size:9px;letter-spacing:.26em;text-transform:uppercase;
+  padding:0;border:0;white-space:nowrap}
+.p-good{color:var(--good)} .p-warn{color:var(--warn)} .p-bad{color:var(--bad)}
+.p-plan{color:var(--faint)} .p-live{color:var(--accent)}
+
+/* bars */
+.bar{height:2px;background:var(--wash);margin-top:18px;position:relative;overflow:hidden}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--accent);display:block}
+.bar i.good{background:var(--good)} .bar i.warn{background:var(--warn)} .bar i.bad{background:var(--bad)}
+.barcap{display:flex;justify-content:space-between;gap:16px;font-size:11.5px;color:var(--faint);
+  margin-top:10px;font-variant-numeric:tabular-nums}
+
+/* forms */
+.form{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px;align-items:flex-end}
+.fld{display:flex;flex-direction:column;gap:7px;min-width:0}
+.fld label{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint)}
+input[type=number],input[type=text],select,textarea{
+  font-family:var(--sans);font-size:14px;font-weight:300;color:var(--ink);background:transparent;
+  border:0;border-bottom:1px solid var(--hair);padding:6px 0;width:104px;border-radius:0}
+select{width:160px}
+textarea{width:100%;min-height:72px;line-height:1.5;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:0;border-bottom-color:var(--ink)}
+.btn{appearance:none;font-family:var(--sans);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;
+  background:none;color:var(--ink);border:0;border-bottom:1px solid var(--ink);padding:7px 0;cursor:pointer}
+.btn.ghost{color:var(--faint);border-bottom-color:var(--hair)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* table */
+.tscroll{overflow-x:auto;margin-top:46px}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);font-weight:400;
+  text-align:left;padding:0 20px 14px 0;border-bottom:1px solid var(--ink);white-space:nowrap}
+td{padding:16px 20px 16px 0;border-bottom:1px solid var(--hair);font-size:14px;vertical-align:top}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;padding-right:0}
+tfoot td{border-bottom:0;border-top:1px solid var(--ink);color:var(--faint)}
+
+/* sections */
+.block{margin-top:56px}
+.ph{font-family:var(--display);font-size:21px;font-weight:400;letter-spacing:.09em;text-transform:uppercase;
+  padding-bottom:14px;border-bottom:1px solid var(--ink);margin:0 0 26px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+@media (max-width:760px){.two{grid-template-columns:1fr;gap:46px}}
+.out{font-family:var(--sans);font-size:14px;line-height:1.68;
+  background:none;border:0;border-top:1px solid var(--hair);padding:30px 0 0;margin-top:30px;
+  max-height:560px;overflow:auto;max-width:62ch}
+.nl-mast{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint)}
+.nl-title{font-family:var(--display);font-size:28px;font-weight:400;line-height:1.15;margin-top:10px}
+.nl-sub{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);margin-top:10px;
+  padding-bottom:26px;border-bottom:1px solid var(--hair)}
+.nl-h{font-family:var(--display);font-size:19px;font-weight:400;letter-spacing:.06em;
+  text-transform:uppercase;margin-top:40px;padding-bottom:10px;border-bottom:1px solid var(--ink)}
+.nl-eh{font-family:var(--display);font-size:17px;font-weight:400;margin-top:26px}
+.nl-meta{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);margin-top:7px}
+.nl-body{color:var(--smoke);margin-top:9px}
+.nl-note{color:var(--ink);margin-top:14px;font-family:var(--display);font-size:16px}
+.nl-tags{font-size:11.5px;letter-spacing:.06em;color:var(--faint);margin-top:7px}
+.nl-li{color:var(--smoke);margin-top:7px}
+.nl-foot{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);
+  margin-top:40px;padding-top:16px;border-top:1px solid var(--hair)}
+.note{font-family:var(--display);font-size:16px;line-height:1.6;color:var(--ink);
+  max-width:60ch;margin-top:56px;padding-top:24px;border-top:1px solid var(--ink)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(26px + env(safe-area-inset-bottom,0px));
+  background:var(--ink);color:var(--paper);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;
+  padding:12px 22px;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.on{opacity:1}
+.foot{margin-top:76px;padding-top:18px;border-top:1px solid var(--hair);font-size:9px;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--faint);display:flex;flex-wrap:wrap;
+  gap:10px 28px;justify-content:space-between}
+.logline{padding:16px 0;border-bottom:1px solid var(--hair)}
+.logline:last-of-type{border-bottom:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <div class="mast">
+    <div>
+      <h1 class="wordmark">HARBOR HOUSE</h1>
+      <p class="wordsub">West Wharf</p>
+    </div>
+    <div class="mastr">Lifestyle Console<br>November · December · January</div>
+  </div>
+  <hr class="hr">
+  <p class="standfirst">Harbor House is West Wharf&#8217;s membership amenity package: four floors of wellness, work and play. This is how the calendar that fills them is run. One program, attendance against capacity, spend against the sheet, and a newsletter written from the record. Illustrative, with sample figures. Theo Thompson for West Wharf.</p>
+
+  <div class="rail" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" id="t-program" aria-controls="p-program" aria-selected="true">Program</button>
+    <button class="tab" role="tab" id="t-attend" aria-controls="p-attend" aria-selected="false">Attendance</button>
+    <button class="tab" role="tab" id="t-spend" aria-controls="p-spend" aria-selected="false">Spend</button>
+    <button class="tab" role="tab" id="t-news" aria-controls="p-news" aria-selected="false">Newsletter</button>
+    <button class="tab" role="tab" id="t-obj" aria-controls="p-obj" aria-selected="false">Team</button>
+  </div>
+
+  <!-- PROGRAM -->
+  <section id="p-program" role="tabpanel" aria-labelledby="t-program">
+    <div class="strip" id="progStrip"></div>
+    <div class="filters">
+      <span class="flab">Month</span>
+      <button class="chip" data-f="month" data-v="all" aria-pressed="true">All</button>
+      <button class="chip" data-f="month" data-v="November" aria-pressed="false">Nov</button>
+      <button class="chip" data-f="month" data-v="December" aria-pressed="false">Dec</button>
+      <button class="chip" data-f="month" data-v="January" aria-pressed="false">Jan</button>
+    </div>
+    <div class="filters">
+      <span class="flab">Section</span>
+      <button class="chip" data-f="sec" data-v="all" aria-pressed="true">All</button>
+      <button class="chip" data-f="sec" data-v="Rooftop" aria-pressed="false">Rooftop</button>
+      <button class="chip" data-f="sec" data-v="Wellness" aria-pressed="false">Wellness</button>
+      <button class="chip" data-f="sec" data-v="Work" aria-pressed="false">Work</button>
+      <button class="chip" data-f="sec" data-v="Play" aria-pressed="false">Play</button>
+      <button class="chip" data-f="sec" data-v="Kids" aria-pressed="false">Kids</button>
+      <button class="chip" data-f="sec" data-v="Highlights" aria-pressed="false">Highlights</button>
+    </div>
+    <div class="rows" id="progRows"></div>
+    <p class="note">The calendar is the structure. The detail is what surprises and delights, and it comes from what the desk already knows.</p>
+  </section>
+
+  <!-- ATTENDANCE -->
+  <section id="p-attend" role="tabpanel" aria-labelledby="t-attend" hidden>
+    <div class="strip" id="attStrip"></div>
+    <div class="tscroll">
+      <table>
+        <thead><tr>
+          <th>Event</th><th>Month</th><th class="num">Capacity</th><th class="num">Attended</th>
+          <th class="num">Fill</th><th class="num">Residences</th><th class="num">Repeat</th>
+          <th class="num">Cost / head</th><th>Verdict</th>
+        </tr></thead>
+        <tbody id="attBody"></tbody>
+        <tfoot id="attFoot"></tfoot>
+      </table>
+    </div>
+    <div class="block">
+      <h2 class="ph">Log Attendance</h2>
+      <div class="form">
+        <div class="fld" style="flex:1 1 260px"><label for="aEvent">Event</label>
+          <select id="aEvent" style="width:100%"></select></div>
+        <div class="fld"><label for="aAtt">Attended</label><input type="number" id="aAtt" min="0" step="1"></div>
+        <div class="fld"><label for="aRes">Residences</label><input type="number" id="aRes" min="0" step="1"></div>
+        <div class="fld"><label for="aRep">Returning</label><input type="number" id="aRep" min="0" step="1"></div>
+        <div class="fld"><label for="aSpent">Spent (USD)</label><input type="number" id="aSpent" min="0" step="1"></div>
+        <button class="btn" id="aSave">Record</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEND -->
+  <section id="p-spend" role="tabpanel" aria-labelledby="t-spend" hidden>
+    <div class="strip" id="spStrip"></div>
+    <div class="block">
+      <h2 class="ph">Pacing</h2>
+      <div id="spMonths"></div>
+    </div>
+    <div class="tscroll">
+      <table>
+        <thead><tr>
+          <th>Event</th><th>Month</th><th>Owner</th><th class="num">Budget</th>
+          <th class="num">Committed</th><th class="num">Spent</th><th class="num">Variance</th>
+        </tr></thead>
+        <tbody id="spBody"></tbody>
+        <tfoot id="spFoot"></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="p-news" role="tabpanel" aria-labelledby="t-news" hidden>
+    <div class="block">
+      <h2 class="ph">The Monthly Issue</h2>
+      <div class="form">
+        <div class="fld"><label for="nMonth">Issue</label>
+          <select id="nMonth" style="width:150px">
+            <option>November</option><option selected>December</option><option>January</option>
+          </select></div>
+        <div class="fld" style="flex:1 1 220px"><label for="nNote">Director&#8217;s note</label>
+          <input type="text" id="nNote" style="width:100%" placeholder="One line, optional"></div>
+        <button class="btn" id="nGen">Compose</button>
+        <button class="btn ghost" id="nCopy">Copy</button>
+      </div>
+      <div class="out" id="nOut" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- OBJECTIVES -->
+  <section id="p-obj" role="tabpanel" aria-labelledby="t-obj" hidden>
+    <div class="strip" id="objStrip"></div>
+    <div class="block">
+      <h2 class="ph">Objectives</h2>
+      <div class="rows" id="objRows"></div>
+    </div>
+    <div class="two block">
+      <div>
+        <h2 class="ph">Recognition</h2>
+        <div id="recList"></div>
+        <div class="form">
+          <div class="fld" style="flex:1 1 150px"><label for="rWho">Role</label>
+            <select id="rWho" style="width:100%"></select></div>
+          <div class="fld" style="flex:1 1 100%"><label for="rWhat">What they did</label>
+            <input type="text" id="rWhat" style="width:100%" placeholder="Be specific"></div>
+          <button class="btn" id="rAdd">Add</button>
+        </div>
+      </div>
+      <div>
+        <h2 class="ph">Issues</h2>
+        <div id="issList"></div>
+        <div class="form">
+          <div class="fld" style="flex:1 1 100%"><label for="iWhat">Issue raised</label>
+            <input type="text" id="iWhat" style="width:100%" placeholder="What went wrong"></div>
+          <div class="fld" style="flex:1 1 100%"><label for="iFix">Resolution</label>
+            <input type="text" id="iFix" style="width:100%" placeholder="What changed because of it"></div>
+          <button class="btn" id="iAdd">Log</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <span>Theo Thompson · theo@theothompson.com · 347.694.9499</span>
+    <span>Illustrative · Sample data</span>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+var RESIDENCES = 554;
+var SEED = [
+ {id:"e01",c:"Catch the final rooftop sunset of the season. Wrap up in a blanket, take a hot cider or a Davey's hot chocolate, and watch the skyline go gold over the East River. Bring a neighbor.",h:"#harborhouse #rooftop #westwharf",t:"The Last Sunset",s:"Rooftop",m:"November",v:"Sunset Lounge and Sun Deck",a:"All ages",
+  d:"The final rooftop evening of the season. Hot cider and hot chocolate from Davey's, blankets, sunset over the skyline.",
+  cap:120,bud:2400,own:"Lifestyle Coordinator",st:"complete",att:104,res:71,rep:18,sp:2310},
+ {id:"e02",c:"New to the hammam? This guided hour walks you through the ritual from steam to hot tub to cold plunge, with eight places a week so it never feels crowded. All levels welcome.",h:"#harborhouse #hammam #wellness",t:"Hammam Hours",s:"Wellness",m:"November",v:"Hammam, Hot Tub, Cold Plunge",a:"Adults",
+  d:"Weekly guided introduction to the ritual and the contrast circuit, capped at eight. Converts a beautiful room residents are unsure how to use.",
+  cap:32,bud:1200,own:"Spa Lead",st:"complete",att:29,res:24,rep:12,sp:1150},
+ {id:"e03",c:"Working from home this week? Come down for coffee, a Peter Pan pastry, and a neighbors meet and greet. One hour, no agenda.",h:"#harborhouse #workhub #communitylife",t:"Wharf Works",s:"Work",m:"November",v:"Work Hub",a:"Residents working from home",
+  d:"Coffee, pastry from Peter Pan, and a neighbors meet and greet. The highest-value hour in the building.",
+  cap:40,bud:600,own:"Front Desk Lead",st:"complete",att:22,res:19,rep:7,sp:540},
+ {id:"e04",c:"Pull up a seat at the counter for a Diwali table cooked by the team from Nura on Norman Avenue. Twenty seats, drawn by lottery, and worth entering.",h:"#harborhouse #supperclub #greenpoint",t:"Supper Club: Diwali Table",s:"Play",m:"November",v:"Demonstration Kitchen",a:"Adults",
+  d:"Seat-at-the-counter dinner with the team from Nura. Twenty seats, reservation by lottery.",
+  cap:20,bud:3200,own:"Lifestyle Director",st:"complete",att:20,res:17,rep:6,sp:3200},
+ {id:"e05",c:"Six Saturdays, small groups, and a warm pool. Our fitness team teaches ages four to ten, from first float to first lap.",h:"#harborhouse #aquacenter #kids",t:"Saturday Swim School",s:"Kids",m:"November",v:"Aqua Center and Walk-In Pool",a:"Children 4 to 10",
+  d:"Six-week session taught by the fitness team. Builds a recurring Saturday habit for families through winter.",
+  cap:24,bud:1800,own:"Fitness Lead",st:"complete",att:21,res:15,rep:15,sp:1800},
+ {id:"e06",c:"Long tables, one dish from every household, and the whole building in one room. Our favorite night of the year, and the easiest way to meet your floor.",h:"#harborhouse #friendsgiving #communitylife",t:"Friendsgiving at the Wharf",s:"Highlights",m:"November",v:"Demonstration Kitchen and Private Event Areas",a:"Building-wide",
+  d:"Long tables, residents bring one dish. The warmest first impression a new community can make.",
+  cap:180,bud:4800,own:"Lifestyle Director",st:"complete",att:166,res:112,rep:41,sp:5140},
+
+ {id:"e07",c:"Join us on the Sun Deck each night of Hanukkah, December 5 through 12, as the candles go up over the skyline. Sign up at the desk to light a night.",h:"#harborhouse #hanukkah #rooftop",t:"Rooftop Menorah",s:"Rooftop",m:"December",v:"Sun Deck",a:"All ages",
+  d:"Nightly candle lighting through Hanukkah, December 5 to 12, visible from the plaza. Residents sign up to light a night.",
+  cap:80,bud:1400,own:"Lifestyle Coordinator",st:"committed",att:null,res:null,rep:null,sp:0},
+ {id:"e08",c:"December asks a lot of you. Forty minutes a week in the salt room and the meditation room asks nothing at all. Drop in.",h:"#harborhouse #saltroom #wellness",t:"Salt and Stillness",s:"Wellness",m:"December",v:"Salt Therapy and Meditation Rooms",a:"Adults",
+  d:"Weekly forty-minute sessions through the busiest month. The counter-programming to December.",
+  cap:48,bud:900,own:"Spa Lead",st:"committed",att:null,res:null,rep:null,sp:0},
+ {id:"e09",c:"Try a treatment, then take one home. Previews run all week in the Private Spa Suite, with resident gift certificates available at the desk.",h:"#harborhouse #spa #benefitsandperks",t:"Spa Gifting Week",s:"Wellness",m:"December",v:"Private Spa Suite",a:"Adults",
+  d:"Treatment previews and resident gift certificates. Drives spa revenue in the one week people are buying.",
+  cap:60,bud:1600,own:"Spa Lead",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e10",c:"WORD Bookstore brings their staff picks and a visiting author to the Library. Come for the talk, leave with the book, and find our shelf refreshed every season.",h:"#harborhouse #library #greenpoint",t:"Year-End Reads",s:"Work",m:"December",v:"Library and Work Lounges",a:"Adults",
+  d:"Evening with WORD Bookstore, staff picks and a visiting author, on a shelf they curate quarterly.",
+  cap:45,bud:1100,own:"Front Desk Lead",st:"committed",att:null,res:null,rep:null,sp:0},
+ {id:"e11",c:"Four films, four weeks, two screenings each: a family matinee and a late show. Popcorn is on us.",h:"#harborhouse #screeningroom #holidays",t:"Holiday Film Series",s:"Play",m:"December",v:"Screening Rooms and Lounge",a:"All ages",
+  d:"Four titles across December, one family matinee and one late screening each week.",
+  cap:160,bud:1900,own:"Lifestyle Coordinator",st:"committed",att:null,res:null,rep:null,sp:0},
+ {id:"e12",c:"Three Friday nights of bowling and billiards, one bracket, and a trophy that stays in the building. Enter solo or as a pair.",h:"#harborhouse #bowling #billiards",t:"Winter Classic",s:"Play",m:"December",v:"Bowling Alleys and Billiards",a:"Adults",
+  d:"Bracketed bowling and billiards across three Friday evenings, finals before the holiday break.",
+  cap:72,bud:1300,own:"Front Desk Lead",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e13",c:"Bring the children down to fry latkes, write holiday cards, and work through a Davey's hot chocolate. Aprons provided, mess expected.",h:"#harborhouse #hanukkah #kids",t:"Latkes, Letters and Cocoa",s:"Kids",m:"December",v:"Children's Playroom",a:"Families",
+  d:"Hanukkah cooking with the children, holiday card making, hot chocolate from Davey's. The easiest high-attendance event of the quarter.",
+  cap:60,bud:1200,own:"Lifestyle Coordinator",st:"committed",att:null,res:null,rep:null,sp:0},
+ {id:"e14",c:"Teens take over the Game Room and the lanes on Friday nights. Residents thirteen and up run the bracket themselves and earn service hours doing it.",h:"#harborhouse #gameroom #teens",t:"Tournament Night",s:"Kids",m:"December",v:"Game Room and Bowling Alleys",a:"Teens",
+  d:"Console and bowling brackets on Friday evenings. Teen volunteers run the bracket and earn service hours.",
+  cap:40,bud:700,own:"Front Desk Lead",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e15",c:"School is out and the Playroom and Game Room are open. Interactive activities to fill the children's days, including a pizza-making afternoon with Paulie Gee's.",h:"#harborhouse #winterbreak #kids",t:"Winter Break Days",s:"Kids",m:"December",v:"Playroom and Game Room",a:"Families",
+  d:"Interactive activities to fill children's days across school break, in the Playroom and Game Room. The week parents need the building most.",
+  cap:100,bud:2600,own:"Fitness Lead",st:"committed",att:null,res:null,rep:null,sp:0},
+ {id:"e16",c:"Greenpoint comes to the plaza for one Saturday: Big Night, Cibone, Homecoming, Greenery Unlimited and more. Shop the neighborhood without leaving home.",h:"#harborhouse #wintermarket #greenpoint",t:"The Winter Market",s:"Highlights",m:"December",v:"Wharf Plaza and Promenade",a:"All ages",
+  d:"Eight to ten Greenpoint vendors across one Saturday. Big Night, Cibone, Homecoming, Greenery Unlimited. Partly sponsorship-funded.",
+  cap:400,bud:6500,own:"Lifestyle Director",st:"committed",att:null,res:null,rep:null,sp:0},
+ {id:"e17",c:"Forty floors up, with the skyline doing the rest. Tickets are limited and go to residents first.",h:"#harborhouse #newyearseve #rooftop",t:"New Year's Countdown",s:"Highlights",m:"December",v:"Rooftop Private Event Areas",a:"Adults",
+  d:"The building's single best asset on the one night it matters most. Capped, ticketed, staffed in advance.",
+  cap:150,bud:7800,own:"Lifestyle Director",st:"committed",att:null,res:null,rep:null,sp:0},
+
+ {id:"e18",c:"Fire pits on the rooftop, heaters going, and hot chocolate and s'mores with Peek in Cafe. Come up in your coat.",h:"#harborhouse #smores #rooftop",t:"S'mores and Cocoa",s:"Rooftop",m:"January",v:"Grilling Kitchens",a:"Families",
+  d:"Fire pits, heaters, and hot chocolate with Peek in Cafe. Short window, high turnout, low cost.",
+  cap:90,bud:1500,own:"Lifestyle Coordinator",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e19",c:"Four weeks, four guided sessions, sauna to steam to cold plunge, with guest guides from Bathhouse and Vessel Floats. The most useful hour of your January.",h:"#harborhouse #thereset #wellness",t:"The Reset",s:"Wellness",m:"January",v:"Full Wellness Floor",a:"Adults",
+  d:"Four-week series across sauna, steam, experience shower and plunge, one guided session each week, with Bathhouse and Vessel Floats as guest guides.",
+  cap:64,bud:3400,own:"Spa Lead",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e20",c:"Mark Tu BiShvat on January 23 in the Garden Lounge with Greenery Unlimited. Plant something, take a cutting home, and watch it through the winter.",h:"#harborhouse #tubishvat #gardenlounge",t:"Tu BiShvat Planting",s:"Wellness",m:"January",v:"Garden Lounge",a:"All ages",
+  d:"Planting session on January 23 with Greenery Unlimited. Residents take a cutting home.",
+  cap:30,bud:600,own:"Lifestyle Coordinator",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e21",c:"The recording studio is yours. Open hours all month, plus a vinyl listening night with Eavesdrop. Bring a record.",h:"#harborhouse #soundroom #music",t:"Sound Room Sessions",s:"Work",m:"January",v:"Podcast and Music Recording Studio",a:"Teens and adults",
+  d:"Open studio hours and a vinyl listening night with Eavesdrop. Likely the most underused room in the building, worth testing first.",
+  cap:30,bud:800,own:"Front Desk Lead",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e22",c:"An executive coach helps you build a plan instead of a resolution. Sessions run the first two weeks of January in the conference rooms.",h:"#harborhouse #planninghour #workhub",t:"The Planning Hour",s:"Work",m:"January",v:"Conference Rooms",a:"Adults",
+  d:"An executive coach helps residents build a plan instead of a resolution. First two weeks of January, when attendance is free.",
+  cap:36,bud:400,own:"Front Desk Lead",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e23",c:"Taqueria Ramirez brings the spit to the Demonstration Kitchen. Twenty seats by lottery, and yes, the al pastor is the one to order.",h:"#harborhouse #supperclub #greenpoint",t:"Supper Club: Taco Night",s:"Play",m:"January",v:"Demonstration Kitchen",a:"Adults",
+  d:"Seat-at-the-counter dinner with Taqueria Ramirez. Twenty seats, reservation by lottery.",
+  cap:20,bud:2600,own:"Lifestyle Director",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e24",c:"Two ways to move this winter: an eight-week golf ladder on the simulators, and intro sessions on the climbing wall. No experience needed for either.",h:"#harborhouse #golf #climbing",t:"League Launch and Climb Club",s:"Play",m:"January",v:"Golf Simulators and Climbing Wall",a:"Adults and teens",
+  d:"Eight-week golf ladder plus intro climbing sessions. Both self-sustaining once started.",
+  cap:48,bud:1100,own:"Fitness Lead",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e25",c:"A children's afternoon on January 6, with a story hour, a craft table, and something sweet. Little ones and grown-ups both welcome.",h:"#harborhouse #threekingsday #kids",t:"Three Kings Day Afternoon",s:"Kids",m:"January",v:"Children's Playroom",a:"Families",
+  d:"A children's afternoon on January 6, with a story hour and a craft table.",
+  cap:50,bud:700,own:"Lifestyle Coordinator",st:"planned",att:null,res:null,rep:null,sp:0},
+ {id:"e26",c:"One week, every floor of Harbor House: wellness, fitness and planning programming back to back. Pick one thing or do all of it.",h:"#harborhouse #resetweek #wellness",t:"Reset Week",s:"Highlights",m:"January",v:"Harbor House, all floors",
+  a:"Building-wide",
+  d:"Wellness, fitness and planning programming concentrated into one week. Re-engages residents at the exact moment renewal conversations begin.",
+  cap:200,bud:900,own:"Lifestyle Director",st:"planned",att:null,res:null,rep:null,sp:0}
+];
+var BUDGET = {November:14000, December:27000, January:12000};
+var ROLES = ["Lifestyle Director","Lifestyle Coordinator","Front Desk Lead","Fitness Lead","Spa Lead"];
+var OBJECTIVES = [
+ {o:"Reach 60 percent of residences with at least one event this quarter",own:"Lifestyle Director",due:"31 Jan",st:"on track"},
+ {o:"Hold quarter spend within 2 percent of the sheet, either direction",own:"Lifestyle Director",due:"31 Jan",st:"on track"},
+ {o:"Keep four events a quarter in every Harbor House section",own:"Lifestyle Coordinator",due:"Monthly",st:"on track"},
+ {o:"Front desk coverage confirmed two weeks ahead for every holiday date",own:"Front Desk Lead",due:"15 Dec",st:"at risk"},
+ {o:"Lift repeat attendance to 30 percent of total by the January review",own:"Lifestyle Coordinator",due:"31 Jan",st:"watch"},
+ {o:"Sign four neighborhood partners to recurring terms, not one-offs",own:"Lifestyle Director",due:"31 Jan",st:"on track"}
+];
+var SEED_REC = [
+ {who:"Front Desk Lead",what:"Caught a double-booked screening room before residents arrived and moved the matinee without anyone noticing."},
+ {who:"Spa Lead",what:"Rewrote the hammam intro script after two sessions of confused guests. Fill went from half to full."}
+];
+var SEED_ISS = [
+ {what:"Friendsgiving ran $340 over on rentals.",fix:"Tables now booked on a standing quarterly order instead of per event. Overage absorbed from the January line."},
+ {what:"Wharf Works drew 22 against a capacity of 40.",fix:"Moved from Tuesday to Thursday and added the Peter Pan standing order. One more miss and the series is cut."}
+];
+
+var KEY="hh.console.v1";
+var state={events:null,rec:null,iss:null};
+function load(){
+  var saved=null;
+  try{var raw=localStorage.getItem(KEY); if(raw) saved=JSON.parse(raw);}catch(e){saved=null;}
+  state.events=SEED.map(function(e){
+    var c=saved&&saved.events&&saved.events[e.id];
+    var n={}; for(var k in e) n[k]=e[k];
+    if(c){ n.att=c.att; n.res=c.res; n.rep=c.rep; n.sp=c.sp; n.st=c.st||n.st; }
+    return n;
+  });
+  state.rec=(saved&&saved.rec)?saved.rec:SEED_REC.slice();
+  state.iss=(saved&&saved.iss)?saved.iss:SEED_ISS.slice();
+}
+function save(){
+  try{
+    var ev={};
+    state.events.forEach(function(e){ev[e.id]={att:e.att,res:e.res,rep:e.rep,sp:e.sp,st:e.st};});
+    localStorage.setItem(KEY,JSON.stringify({events:ev,rec:state.rec,iss:state.iss}));
+  }catch(e){}
+}
+function $(s){return document.querySelector(s);}
+function el(tag,cls,txt){var n=document.createElement(tag); if(cls)n.className=cls; if(txt!=null)n.textContent=txt; return n;}
+function money(n){return "$"+Math.round(n).toLocaleString("en-US");}
+function pct(n){return Math.round(n*100)+"%";}
+function committed(e){return (e.st==="committed"||e.st==="complete")?e.bud:0;}
+function fill(e){return (e.att==null||!e.cap)?null:e.att/e.cap;}
+function verdict(e){
+  var f=fill(e);
+  if(f==null) return {label:e.st==="committed"?"Committed":"Planned",cls:e.st==="committed"?"p-live":"p-plan"};
+  if(f>=0.90) return {label:"Exceeded",cls:"p-good"};
+  if(f>=0.70) return {label:"On target",cls:"p-good"};
+  if(f>=0.45) return {label:"Review",cls:"p-warn"};
+  return {label:"Cut",cls:"p-bad"};
+}
+function barClass(f){return f>=0.9?"good":f>=0.7?"":f>=0.45?"warn":"bad";}
+
+/* ---------- Program ---------- */
+var filt={month:"all",sec:"all"};
+function renderProgram(){
+  var list=state.events.filter(function(e){
+    return (filt.month==="all"||e.m===filt.month)&&(filt.sec==="all"||e.s===filt.sec);
+  });
+  var strip=$("#progStrip"); strip.textContent="";
+  var done=state.events.filter(function(e){return e.att!=null;});
+  var reach=0; done.forEach(function(e){reach+=e.res||0;});
+  var cells=[
+    ["Events",String(state.events.length),"Three months, six sections"],
+    ["Recorded",String(done.length),"Attendance logged"],
+    ["Residences reached",pct(Math.min(1,reach/RESIDENCES)),"Of 554"]
+  ];
+  cells.forEach(function(c){
+    var d=el("div","cell"); d.appendChild(el("div","k",c[0]));
+    d.appendChild(el("div","v",c[1])); d.appendChild(el("div","n",c[2])); strip.appendChild(d);
+  });
+  var rows=$("#progRows"); rows.textContent="";
+  if(!list.length){ rows.appendChild(el("p","rbody","No events match that filter.")); return; }
+  list.forEach(function(e){
+    var r=el("div","row");
+    var top=el("div","rtop");
+    var left=el("div"); left.style.minWidth="0";
+    left.appendChild(el("div","rname",e.t));
+    left.appendChild(el("div","rmeta",[e.m,e.s,e.v,e.a].join("  ·  ")));
+    top.appendChild(left);
+    var v=verdict(e);
+    var right=el("div"); right.style.textAlign="right"; right.style.minWidth="0";
+    right.appendChild(el("span","pill "+v.cls,v.label));
+    right.appendChild(el("div","rmeta",money(e.bud)+" · "+e.own));
+    top.appendChild(right);
+    r.appendChild(top);
+    r.appendChild(el("div","rbody",e.d));
+    var f=fill(e);
+    if(f!=null){
+      var b=el("div","bar"); var i=el("i",barClass(f)); i.style.width=Math.min(100,f*100)+"%"; b.appendChild(i);
+      r.appendChild(b);
+      var cap=el("div","barcap");
+      cap.appendChild(el("span",null,e.att+" of "+e.cap+" places filled"));
+      cap.appendChild(el("span",null,e.res+" residences · "+e.rep+" returning"));
+      r.appendChild(cap);
+    }
+    rows.appendChild(r);
+  });
+}
+
+/* ---------- Attendance ---------- */
+function renderAttendance(){
+  var done=state.events.filter(function(e){return e.att!=null;});
+  var tot={cap:0,att:0,res:0,rep:0,sp:0};
+  done.forEach(function(e){tot.cap+=e.cap;tot.att+=e.att;tot.res+=e.res;tot.rep+=e.rep;tot.sp+=e.sp;});
+  var strip=$("#attStrip"); strip.textContent="";
+  var avgFill=tot.cap?tot.att/tot.cap:0;
+  var repRate=tot.att?tot.rep/tot.att:0;
+  var cph=tot.att?tot.sp/tot.att:0;
+  var cells=[
+    ["Attendance",tot.att.toLocaleString("en-US"),done.length+" events"],
+    ["Average fill",pct(avgFill),avgFill>=0.8?"Healthy":"Under the 80 percent line"],
+    ["Repeat rate",pct(repRate),"Target 30 percent"],
+    ["Cost per head",tot.att?money(cph):"—","Against recorded spend"]
+  ];
+  cells.forEach(function(c){
+    var d=el("div","cell"); d.appendChild(el("div","k",c[0]));
+    d.appendChild(el("div","v",c[1])); d.appendChild(el("div","n",c[2])); strip.appendChild(d);
+  });
+
+  var body=$("#attBody"); body.textContent="";
+  state.events.forEach(function(e){
+    var tr=el("tr");
+    tr.appendChild(el("td",null,e.t));
+    tr.appendChild(el("td",null,e.m));
+    tr.appendChild(el("td","num",String(e.cap)));
+    tr.appendChild(el("td","num",e.att==null?"—":String(e.att)));
+    var f=fill(e);
+    tr.appendChild(el("td","num",f==null?"—":pct(f)));
+    tr.appendChild(el("td","num",e.res==null?"—":String(e.res)));
+    tr.appendChild(el("td","num",e.rep==null?"—":String(e.rep)));
+    tr.appendChild(el("td","num",(e.att&&e.sp)?money(e.sp/e.att):"—"));
+    var v=verdict(e); var td=el("td"); td.appendChild(el("span","pill "+v.cls,v.label));
+    tr.appendChild(td);
+    body.appendChild(tr);
+  });
+  var foot=$("#attFoot"); foot.textContent="";
+  var ftr=el("tr");
+  ftr.appendChild(el("td",null,"Recorded total"));
+  ftr.appendChild(el("td",null,""));
+  ftr.appendChild(el("td","num",String(tot.cap)));
+  ftr.appendChild(el("td","num",String(tot.att)));
+  ftr.appendChild(el("td","num",tot.cap?pct(avgFill):"—"));
+  ftr.appendChild(el("td","num",String(tot.res)));
+  ftr.appendChild(el("td","num",String(tot.rep)));
+  ftr.appendChild(el("td","num",tot.att?money(cph):"—"));
+  ftr.appendChild(el("td",null,""));
+  foot.appendChild(ftr);
+
+  var sel=$("#aEvent"); var cur=sel.value; sel.textContent="";
+  state.events.forEach(function(e){
+    var o=el("option",null,e.t+"  ·  "+e.m); o.value=e.id; sel.appendChild(o);
+  });
+  if(cur) sel.value=cur;
+}
+
+/* ---------- Spend ---------- */
+function renderSpend(){
+  var months=["November","December","January"];
+  var totB=0,totC=0,totS=0;
+  state.events.forEach(function(e){totB+=e.bud; totC+=committed(e); totS+=e.sp||0;});
+  var strip=$("#spStrip"); strip.textContent="";
+  var remaining=totB-totS;
+  var cells=[
+    ["Budget",money(totB),"Set by property management"],
+    ["Committed",money(totC),pct(totC/totB)+" of the sheet"],
+    ["Spent",money(totS),pct(totS/totB)+" of the sheet"],
+    ["Remaining",money(remaining),remaining<0?"Over the sheet":"To land near zero"]
+  ];
+  cells.forEach(function(c){
+    var d=el("div","cell"); d.appendChild(el("div","k",c[0]));
+    d.appendChild(el("div","v",c[1])); d.appendChild(el("div","n",c[2])); strip.appendChild(d);
+  });
+
+  var host=$("#spMonths"); host.textContent="";
+  months.forEach(function(m){
+    var b=BUDGET[m],s=0,c=0;
+    state.events.forEach(function(e){ if(e.m===m){ s+=e.sp||0; c+=committed(e); }});
+    var wrap=el("div"); wrap.style.marginBottom="26px";
+    var head=el("div","barcap"); head.style.marginTop="0";
+    head.appendChild(el("span",null,m));
+    head.appendChild(el("span",null,money(s)+" spent · "+money(c)+" committed · "+money(b)+" budget"));
+    wrap.appendChild(head);
+    var bar=el("div","bar"); bar.style.height="3px";
+    var ci=el("i"); ci.style.width=Math.min(100,(c/b)*100)+"%"; ci.style.opacity=".22"; bar.appendChild(ci);
+    var si=el("i",(s/b)>1.05?"bad":(s/b)>1?"warn":(s/b)>=0.9?"good":""); si.style.width=Math.min(100,(s/b)*100)+"%"; bar.appendChild(si);
+    wrap.appendChild(bar);
+    var note=(s/b)>1?"Over. Variance moves from a later month."
+      :(c/b)>=0.95?"Fully committed."
+      :"Balance still to place.";
+    var n=el("div","barcap"); n.appendChild(el("span",null,note)); n.appendChild(el("span",null,pct(s/b)+" drawn"));
+    wrap.appendChild(n);
+    host.appendChild(wrap);
+  });
+
+  var body=$("#spBody"); body.textContent="";
+  state.events.forEach(function(e){
+    var tr=el("tr");
+    tr.appendChild(el("td",null,e.t));
+    tr.appendChild(el("td",null,e.m));
+    tr.appendChild(el("td",null,e.own));
+    tr.appendChild(el("td","num",money(e.bud)));
+    tr.appendChild(el("td","num",committed(e)?money(committed(e)):"—"));
+    tr.appendChild(el("td","num",e.sp?money(e.sp):"—"));
+    var vnc=e.sp?(e.bud-e.sp):null;
+    var td=el("td","num",vnc==null?"—":(vnc<0?"("+money(-vnc)+")":money(vnc)));
+    if(vnc!=null&&vnc<0) td.style.color="var(--bad)";
+    tr.appendChild(td);
+    body.appendChild(tr);
+  });
+  var foot=$("#spFoot"); foot.textContent="";
+  var ftr=el("tr");
+  ftr.appendChild(el("td",null,"Quarter"));
+  ftr.appendChild(el("td",null,"")); ftr.appendChild(el("td",null,""));
+  ftr.appendChild(el("td","num",money(totB)));
+  ftr.appendChild(el("td","num",money(totC)));
+  ftr.appendChild(el("td","num",money(totS)));
+  ftr.appendChild(el("td","num",money(totB-totS)));
+  foot.appendChild(ftr);
+}
+
+/* ---------- Newsletter ---------- */
+function order(m){return m==="November"?0:m==="December"?1:2;}
+function newsletter(month,note){
+  var idx=order(month);
+  var prev=["November","December","January"][idx-1];
+  var next=["November","December","January"][idx+1];
+  var L=[];
+  function P(k,t){L.push([k,t]);}
+  P("mast","Harbor House at West Wharf");
+  P("title",month+" at the Wharf");
+  P("sub","60 Wharf Drive, Greenpoint");
+  P("body","Welcome home. Here is everything happening at Harbor House this month, plus what is coming next and what your neighbors have been up to. Reservations open the Monday before each date at the front desk or in the resident app. Where a capacity is listed it is firm, and a waitlist runs.");
+  if(note) P("note",note);
+
+  P("h","Events This Month");
+  state.events.filter(function(e){return e.m===month;}).forEach(function(e){
+    P("eh",e.t);
+    P("meta",e.v+"  ·  "+e.a+"  ·  Capacity "+e.cap);
+    P("body",e.c||e.d);
+    P("tags",e.h||"#harborhouse #westwharf");
+  });
+
+  P("h","Weekly Classes");
+  P("eh","Studio Sixty Spin");
+  P("body","Get your cardio in. Endurance, strength, intervals and high-intensity work, set to music that keeps you moving on terrain that keeps you honest. You will finish the class wanting the next one.");
+  P("tags","#studiosixty #spin #fitness");
+  P("eh","Pilates");
+  P("body","Flexibility, muscle tone and strength, every week. Highly customizable to what your body needs that day, and all levels are welcome.");
+  P("tags","#studiosixty #pilates #fitness");
+  P("eh","TGIF Yoga");
+  P("body","Looking for stress relief, balance and strength to start the weekend? This weekly class delivers all three. Every level of experience is invited.");
+  P("tags","#studiosixty #yoga #fitness");
+
+  if(prev){
+    var done=state.events.filter(function(e){return e.m===prev&&e.att!=null;});
+    if(done.length){
+      var a=0,r=0; done.forEach(function(e){a+=e.att;r+=e.res;});
+      P("h","Community Life");
+      P("body","Last month you turned out "+a.toLocaleString("en-US")+" times across "+done.length+" events, reaching "+r+" of our 554 residences. Thank you.");
+      var best=done.slice().sort(function(x,y){return (fill(y)||0)-(fill(x)||0);})[0];
+      if(best) P("body","Fullest room: "+best.t+", at "+pct(fill(best))+" of capacity.");
+      var thin=done.filter(function(e){return (fill(e)||0)<0.7;});
+      if(thin.length) P("body","Room to grow: "+thin.map(function(e){return e.t;}).join(", ")+". We are changing the night and the format rather than running it again unchanged. Tell us what would get you there.");
+    }
+  }
+
+  if(next){
+    P("h","Looking Ahead to "+next);
+    state.events.filter(function(e){return e.m===next;}).slice(0,4).forEach(function(e){
+      P("li",e.t+", "+e.v+".");
+    });
+  }
+
+  P("h","Benefits and Perks");
+  P("body","Our neighborhood partners this season, all within a ten-minute walk: Davey's Ice Cream, Peter Pan Donuts, Peek in Cafe, WORD Bookstore, Nura, Sereneco, Taqueria Ramirez, Big Night, Homecoming, Greenery Unlimited, 50 Norman and Cibone, Eavesdrop, Bathhouse and Vessel Floats. Show your resident credential for a standing courtesy at each.");
+
+  P("h","Tell Us Something");
+  P("body","A birthday, an anniversary, a new job, a new dog, a neighbor worth thanking. The front desk keeps a note of it, and it is how the small things find you.");
+
+  P("foot","Harbor House at West Wharf  ·  60 Wharf Drive, Brooklyn NY 11222  ·  718.400.2100");
+  return L;
+}
+
+function renderNewsletter(){
+  var lines=newsletter($("#nMonth").value,$("#nNote").value.trim());
+  var host=$("#nOut"); host.textContent="";
+  lines.forEach(function(pair){
+    var k=pair[0], t=pair[1];
+    var d=el("div","nl-"+k, k==="li"?("· "+t):t);
+    host.appendChild(d);
+  });
+}
+
+/* ---------- Objectives ---------- */
+function renderObjectives(){
+  var strip=$("#objStrip"); strip.textContent="";
+  var onTrack=OBJECTIVES.filter(function(o){return o.st==="on track";}).length;
+  var cells=[
+    ["Objectives",String(OBJECTIVES.length),"One owner each"],
+    ["On track",String(onTrack),"Reviewed weekly"],
+    ["Recognitions",String(state.rec.length),"Written, not implied"],
+    ["Issues closed",String(state.iss.length),"Raised early, closed in writing"]
+  ];
+  cells.forEach(function(c){
+    var d=el("div","cell"); d.appendChild(el("div","k",c[0]));
+    d.appendChild(el("div","v",c[1])); d.appendChild(el("div","n",c[2])); strip.appendChild(d);
+  });
+  var rows=$("#objRows"); rows.textContent="";
+  OBJECTIVES.forEach(function(o){
+    var r=el("div","row");
+    var top=el("div","rtop");
+    var left=el("div"); left.style.minWidth="0";
+    left.appendChild(el("div","rname",o.o));
+    left.appendChild(el("div","rmeta",o.own+"  ·  Review "+o.due));
+    top.appendChild(left);
+    var cls=o.st==="on track"?"p-good":o.st==="at risk"?"p-bad":"p-warn";
+    top.appendChild(el("span","pill "+cls,o.st));
+    r.appendChild(top);
+    rows.appendChild(r);
+  });
+
+  var rl=$("#recList"); rl.textContent="";
+  state.rec.forEach(function(x){
+    var d=el("div","logline");
+    d.appendChild(el("div","rmeta",x.who));
+    var q=el("div","rbody",x.what); q.style.marginTop="6px"; d.appendChild(q);
+    rl.appendChild(d);
+  });
+  var il=$("#issList"); il.textContent="";
+  state.iss.forEach(function(x){
+    var d=el("div","logline");
+    var a=el("div","rbody",x.what); a.style.color="var(--ink)"; a.style.marginTop="0"; d.appendChild(a);
+    var b2=el("div","rbody",x.fix); b2.style.marginTop="6px"; d.appendChild(b2);
+    il.appendChild(d);
+  });
+  var sel=$("#rWho");
+  if(!sel.options.length){ ROLES.forEach(function(r){var o=el("option",null,r); o.value=r; sel.appendChild(o);}); }
+}
+
+/* ---------- wiring ---------- */
+function renderAll(){renderProgram();renderAttendance();renderSpend();renderObjectives();}
+function toast(msg){
+  var t=$("#toast"); t.textContent=msg; t.classList.add("on");
+  clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove("on");},1900);
+}
+var tabs=Array.prototype.slice.call(document.querySelectorAll(".tab"));
+tabs.forEach(function(tb){
+  tb.addEventListener("click",function(){
+    tabs.forEach(function(o){
+      var on=o===tb;
+      o.setAttribute("aria-selected",on?"true":"false");
+      document.getElementById(o.getAttribute("aria-controls")).hidden=!on;
+    });
+  });
+});
+document.querySelectorAll(".chip").forEach(function(c){
+  c.addEventListener("click",function(){
+    var f=c.dataset.f;
+    document.querySelectorAll('.chip[data-f="'+f+'"]').forEach(function(o){
+      o.setAttribute("aria-pressed",o===c?"true":"false");
+    });
+    filt[f]=c.dataset.v; renderProgram();
+  });
+});
+$("#aEvent").addEventListener("change",function(){
+  var e=state.events.filter(function(x){return x.id===this.value;}.bind(this))[0];
+  if(!e) return;
+  $("#aAtt").value=e.att==null?"":e.att;
+  $("#aRes").value=e.res==null?"":e.res;
+  $("#aRep").value=e.rep==null?"":e.rep;
+  $("#aSpent").value=e.sp?e.sp:"";
+});
+$("#aSave").addEventListener("click",function(){
+  var id=$("#aEvent").value;
+  var e=state.events.filter(function(x){return x.id===id;})[0];
+  if(!e){toast("Pick an event first");return;}
+  function num(sel){var v=$(sel).value; return v===""?null:Math.max(0,Math.round(Number(v)));}
+  var att=num("#aAtt");
+  if(att==null||isNaN(att)){toast("Attendance is required");return;}
+  e.att=att;
+  e.res=num("#aRes")||0;
+  e.rep=num("#aRep")||0;
+  e.sp=num("#aSpent")||0;
+  if(e.res>e.att) e.res=e.att;
+  if(e.rep>e.att) e.rep=e.att;
+  e.st="complete";
+  save(); renderAll();
+  toast(e.t+" recorded · "+verdict(e).label);
+});
+$("#nGen").addEventListener("click",renderNewsletter);
+$("#nMonth").addEventListener("change",renderNewsletter);
+$("#nCopy").addEventListener("click",function(){
+  var txt=$("#nOut").textContent;
+  if(!txt){toast("Compose it first");return;}
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){toast("Copied");},function(){selectOut();});
+  } else selectOut();
+  function selectOut(){
+    var r=document.createRange(); r.selectNodeContents($("#nOut"));
+    var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    toast("Selected · press copy");
+  }
+});
+$("#rAdd").addEventListener("click",function(){
+  var what=$("#rWhat").value.trim();
+  if(!what){toast("Say what they did");return;}
+  state.rec.unshift({who:$("#rWho").value,what:what});
+  $("#rWhat").value=""; save(); renderObjectives(); toast("Recognition logged");
+});
+$("#iAdd").addEventListener("click",function(){
+  var what=$("#iWhat").value.trim(), fix=$("#iFix").value.trim();
+  if(!what){toast("Describe the issue");return;}
+  state.iss.unshift({what:what,fix:fix||"Resolution pending."});
+  $("#iWhat").value=""; $("#iFix").value=""; save(); renderObjectives(); toast("Issue logged");
+});
+
+load();
+renderAll();
+$("#aEvent").dispatchEvent(new Event("change"));
+renderNewsletter();
+</script>
+
+</body></html>
